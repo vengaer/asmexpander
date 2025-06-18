@@ -3,7 +3,9 @@ AsmExpander
 
 Expand GNU AS-style macros for easier stepping with gdb.
 
-Passing the following snippet to
+Nested macros **are** supported.
+
+Passing the following snippet
 
 .. code-block::
 
@@ -17,11 +19,11 @@ Passing the following snippet to
         movl $0x21, %eax
         isolssbl %eax, %r8d
 
-stdin yields
+to stdin yields
 
 .. code-block::
 
-   .macro isolssbl r0, r1
+    .macro isolssbl r0, r1
         leal -1(\r0), \r1
         notl \r1
         andl \r1, \r0
